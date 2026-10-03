@@ -92,7 +92,7 @@ function Welcome() {
   if (showChooser) return <main className="welcome-screen" lang="en">
     <div className="welcome-orbit orbit-one" /><div className="welcome-orbit orbit-two" />
     <section className="welcome-card page-enter language-card">
-      <div className="brand-lockup"><span className="brand-mark"><BookOpen size={23} strokeWidth={2.2} /></span><span className="display brand-name">Study Hub</span></div>
+      <div className="brand-lockup"><img className="brand-logo" src="/brand-logo.png" alt="Study Hub" decoding="async" /></div>
       <div className="welcome-art" aria-hidden="true"><div className="art-sheet"><span className="art-line long" /><span className="art-line" /><span className="art-line short" /></div><div className="art-book"><BookOpen size={38} /></div></div>
       <p className="eyebrow welcome-eyebrow">ඔයා කැමති භාෂාව තෝරන්න</p>
       <h1 className="display welcome-title">Choose your language</h1>
@@ -108,7 +108,7 @@ function Welcome() {
   return <main className="welcome-screen">
     <div className="welcome-orbit orbit-one" /><div className="welcome-orbit orbit-two" />
     <section className="welcome-card page-enter">
-      <div className="brand-lockup"><span className="brand-mark"><BookOpen size={23} strokeWidth={2.2} /></span><span className="display brand-name">Study Hub</span></div>
+      <div className="brand-lockup"><img className="brand-logo" src="/brand-logo.png" alt="Study Hub" decoding="async" /></div>
       <div className="welcome-art" aria-hidden="true">
         <div className="art-sheet"><span className="art-line long" /><span className="art-line" /><span className="art-line short" /></div>
         <div className="art-book"><BookOpen size={38} /></div><div className="art-star"><Sparkles size={19} /></div>
@@ -140,7 +140,7 @@ function Shell({ children }: { children: ReactNode }) {
   const t = (text: string) => tr(text, state.language);
   return <div className="app-shell">
     <header className="topbar">
-      <Link href="/home" className="brand-lockup top-brand" aria-label={`Study Hub ${t('Home')}`}><span className="brand-mark"><BookOpen size={20} /></span><span className="display brand-name">Study Hub</span></Link>
+      <Link href="/home" className="brand-lockup top-brand" aria-label={`Study Hub ${t('Home')}`}><img className="brand-logo" src="/brand-logo.png" alt="" aria-hidden="true" decoding="async" /></Link>
       <nav className="desktop-nav" aria-label={t('Main navigation')}>{navItems.map(({ label, href, Icon }) => <Link key={href} href={href} className={cx('nav-link', activePath === href && 'nav-link-active')} data-testid={`nav-${label.toLowerCase()}`}><Icon size={17} /><span>{t(label)}</span></Link>)}</nav>
       <Link href="/profile" className="top-profile" aria-label={t('Open profile')}><Avatar /></Link>
     </header>

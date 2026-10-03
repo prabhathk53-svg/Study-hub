@@ -1,0 +1,23 @@
+{
+  "name": "Study Hub",
+  "short_name": "Study Hub",
+  "description": "Learn, practice, and grow with Study Hub.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f2f6fc",
+  "theme_color": "#2463d5",
+  "icons": [
+    {
+      "src": "/app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

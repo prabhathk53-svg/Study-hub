@@ -106,8 +106,8 @@ html:lang(si) .reader-title, html:lang(si) .question-title, html:lang(si) .welco
 .app-shell { padding-bottom: 0; }
 .topbar { height: 76px; padding: 0 clamp(22px, 5vw, 72px); display: flex; align-items: center; justify-content: space-between; gap: 24px; background: rgba(255,255,255,.92); border-bottom: 1px solid #e7edf5; position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px); }
 .brand-lockup { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; flex-shrink: 0; }
-.brand-mark { background: #2463d5; color: white; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 11px; box-shadow: 0 5px 12px rgba(36,99,213,.22); }
-.brand-name { font-size: 19px; font-weight: 800; letter-spacing: -.8px; }
+.brand-logo { display: block; width: 144px; max-width: min(38vw, 144px); height: auto; object-fit: contain; flex: 0 1 auto; }
+.top-brand .brand-logo { max-height: 39px; }
 .desktop-nav { display: flex; align-items: center; height: 100%; gap: 5px; }
 .nav-link { height: 42px; display: inline-flex; align-items: center; gap: 8px; padding: 0 13px; border-radius: 12px; color: #617087; text-decoration: none; font-size: 13px; font-weight: 600; transition: background .18s, color .18s; }
 .nav-link:hover { color: var(--blue); background: #f2f6fd; }
@@ -143,7 +143,7 @@ html:lang(si) .reader-title, html:lang(si) .question-title, html:lang(si) .welco
 .orbit-two { width: 230px; height: 230px; right: -115px; top: calc(14% + 55px); }
 .welcome-card { width: min(100%, 445px); background: #fff; position: relative; z-index: 2; border: 1px solid #e7edf6; border-radius: 26px; padding: 31px 39px 25px; box-shadow: 0 25px 70px rgba(32,66,115,.12); }
 .welcome-card .brand-lockup { justify-content: center; width: 100%; }
-.welcome-card .brand-name { font-size: 21px; }
+.welcome-card .brand-logo { width: min(65vw, 224px); max-width: 100%; }
 .welcome-art { height: 115px; position: relative; width: 175px; margin: 24px auto 21px; display: flex; align-items: center; justify-content: center; }
 .art-sheet { height: 83px; width: 68px; background: #edf4ff; border: 1px solid #d9e6f9; border-radius: 9px; transform: rotate(-8deg) translateX(-15px); padding: 19px 11px; display: flex; flex-direction: column; gap: 8px; }
 .art-line { height: 4px; width: 42px; border-radius: 9px; background: #a7c3ed; }.art-line.long { width: 48px; background: #4b82da; }.art-line.short { width: 29px; }
@@ -269,7 +269,7 @@ html:lang(si) .reader-title, html:lang(si) .question-title, html:lang(si) .welco
 
 @media (max-width: 900px) {
   .content-area { padding: 30px 24px 55px; }
-  .topbar { padding: 0 25px; }.nav-link { padding: 0 9px; gap: 6px; font-size: 11px; }.brand-name { font-size: 18px; }
+  .topbar { padding: 0 25px; }.nav-link { padding: 0 9px; gap: 6px; font-size: 11px; }
   .library-lessons .lesson-grid,.bookmark-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .subject-shortcut-grid { grid-template-columns: repeat(2,1fr); }
   .progress-grid { grid-template-columns: repeat(2,1fr); }
@@ -277,7 +277,7 @@ html:lang(si) .reader-title, html:lang(si) .question-title, html:lang(si) .welco
 }
 @media (max-width: 700px) {
   .app-shell { padding-bottom: calc(69px + env(safe-area-inset-bottom)); }
-  .topbar { height: 62px; padding: 0 18px; }.top-brand .brand-mark { width: 31px; height: 31px; }.top-brand .brand-name { font-size: 17px; }.desktop-nav { display: none; }.top-profile .avatar { width: 34px; height: 34px; }
+  .topbar { height: 62px; padding: 0 18px; }.top-brand .brand-logo { width: clamp(120px, 36vw, 132px); max-height: 35px; }.desktop-nav { display: none; }.top-profile .avatar { width: 34px; height: 34px; }
   .content-area { padding: 23px 17px 35px; }.page-content { width: 100%; }
   .mobile-nav { position: fixed; z-index: 30; inset: auto 0 0; display: flex; justify-content: space-around; padding: 8px 8px calc(7px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.96); border-top: 1px solid #e4eaf2; box-shadow: 0 -6px 20px rgba(31,55,88,.06); backdrop-filter: blur(15px); }
   .mobile-nav-item { min-width: 54px; display: flex; flex-direction: column; align-items: center; gap: 4px; color: #8793a5; text-decoration: none; font-size: 9px; font-weight: 600; padding: 2px 6px; }.mobile-nav-active { color: #2863c9; }.mobile-nav-active svg { stroke-width: 2.6; }
