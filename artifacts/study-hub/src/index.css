@@ -70,6 +70,24 @@
   --ring: 211 88% 62%;
 }
 
+html:lang(si), html:lang(si) body, html:lang(si) button, html:lang(si) input, html:lang(si) select {
+  font-family: 'Noto Sans Sinhala', 'Iskoola Pota', 'Nirmala UI', 'Segoe UI', sans-serif;
+}
+html:lang(si) body { line-height: 1.72; }
+.language-options { display: grid; gap: 10px; margin: 18px 0 4px; }
+.language-choice { min-height: 48px; border: 1px solid #dce4ef; border-radius: 12px; color: #42536b; background: #fbfcfe; font-size: 14px; font-weight: 700; cursor: pointer; transition: background .18s, border-color .18s, color .18s, transform .18s; }
+.language-choice:hover { border-color: #8caee4; transform: translateY(-1px); }
+.language-choice-selected { border-color: #3976d1; color: #245eb9; background: #edf4ff; box-shadow: 0 0 0 2px rgba(49,111,218,.08); }
+.language-card .welcome-title { font-size: 27px; letter-spacing: -.4px; margin-bottom: 9px; }
+.language-card .welcome-footnote { text-align: center; line-height: 1.65; }
+.profile-language { grid-template-columns: repeat(2, minmax(0, 190px)); margin: 0; }
+.profile-language .language-choice { padding: 0 15px; }
+html:lang(si) .page-title, html:lang(si) .section-title, html:lang(si) .lesson-title,
+html:lang(si) .reader-title, html:lang(si) .question-title, html:lang(si) .welcome-title {
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
 @layer base {
   * { @apply border-border; }
   html { scroll-behavior: smooth; }

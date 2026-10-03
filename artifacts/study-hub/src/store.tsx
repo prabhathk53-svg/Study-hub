@@ -2,7 +2,8 @@ import { createContext, useContext, useEffect, useMemo, useState, type ReactNode
 
 export type QuizRecord = { date: string; score: number; total: number; answers: number[] };
 export type StudyState = {
-  version: 1;
+  version: 2;
+  language: 'si' | 'en' | null;
   started: boolean;
   student: { name: string; grade: number };
   bookmarks: string[];
@@ -13,7 +14,8 @@ export type StudyState = {
 
 const today = () => new Date().toISOString().slice(0, 10);
 const freshState = (): StudyState => ({
-  version: 1,
+  version: 2,
+  language: null,
   started: false,
   student: { name: '', grade: 10 },
   bookmarks: [],
@@ -25,14 +27,17 @@ const freshState = (): StudyState => ({
 function parseState(raw: string | null): StudyState {
   if (!raw) return freshState();
   try {
-    const parsed = JSON.parse(raw) as Partial<StudyState>;
-    if (parsed.version !== 1 || typeof parsed !== 'object' || !parsed) return freshState();
+    const parsed = JSON.parse(raw) as (Partial<Omit<StudyState, 'version'>> & { version?: number }) | null;
+    if (!parsed || typeof parsed !== 'object' || (parsed.version !== 1 && parsed.version !== 2)) return freshState();
     const student = parsed.student;
     const daily = parsed.dailyQuiz;
     const records = Array.isArray(parsed.quizRecords) ? parsed.quizRecords : [];
     const savedDate = typeof daily?.date === 'string' ? daily.date : today();
     return {
-      version: 1,
+      version: 2,
+      language: parsed.version === 2 && parsed.language === 'si'
+        ? 'si'
+        : parsed.version === 2 && parsed.language === 'en' ? 'en' : null,
       started: parsed.started === true,
       student: { name: typeof student?.name === 'string' ? student.name.slice(0, 40) : '', grade: [10, 11, 12].includes(Number(student?.grade)) ? Number(student?.grade) : 10 },
       bookmarks: Array.isArray(parsed.bookmarks) ? parsed.bookmarks.filter((x): x is string => typeof x === 'string').slice(0, 200) : [],
@@ -51,6 +56,7 @@ const STORAGE_KEY = 'study-hub-state-v1';
 type StudyContextValue = {
   state: StudyState;
   updateStudent: (name: string, grade: number) => void;
+  setLanguage: (language: 'si' | 'en') => void;
   toggleBookmark: (id: string) => void;
   markCompleted: (id: string) => void;
   chooseAnswer: (index: number, choice: number) => void;
@@ -68,6 +74,7 @@ export function StudyProvider({ children }: { children: ReactNode }) {
   }, [state]);
   const value = useMemo<StudyContextValue>(() => ({
     state,
+    setLanguage: language => setState(s => ({ ...s, language })),
     updateStudent: (name, grade) => setState(s => ({ ...s, started: true, student: { name: name.trim().slice(0, 40), grade } })),
     toggleBookmark: id => setState(s => ({ ...s, bookmarks: s.bookmarks.includes(id) ? s.bookmarks.filter(item => item !== id) : [...s.bookmarks, id] })),
     markCompleted: id => setState(s => ({ ...s, completed: s.completed.includes(id) ? s.completed : [...s.completed, id] })),
